@@ -1,5 +1,6 @@
--- SQLite
-CREATE TABLE Creatures (
+-- CREATE CREATURES TABLE IN SQLITE
+
+CREATE TABLE IF NOT EXISTS Creatures (
     name varchar(255),
     element varchar(255),
     level varchar(255),

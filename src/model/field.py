@@ -5,16 +5,20 @@ class modelField:
     def __init__(self) -> None:
         self.field = {
             "side_a": {
-                        "deck_zone": [""], 
-                        "discard_zone": [""],
-                        "boost_zone": [""],
-                        "creatures_zone": ["", "", ""]},
+                        "deck_zone": [], 
+                        "discard_zone": [],
+                        "boost_zone": [],
+                        "creatures_zone": [],
+                        "magic_zone": [],
+                        "hand_zone": []},
 
             "side_b": {
-                        "deck_zone": [""], 
-                        "discard_zone": [""],
-                        "boost_zone": [""],
-                        "creatures_zone": ["", "", ""]}
+                        "deck_zone": [], 
+                        "discard_zone": [],
+                        "boost_zone": [],
+                        "creatures_zone": [],
+                        "magic_zone": [],
+                        "hand_zone": []}
         }
         
         pass
