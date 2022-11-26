@@ -5,15 +5,25 @@ class ExcuteSqlQueries:
     def __init__(self) -> None:
         pass
     
-    def execute_sql_query(self, sql_file):
+    def execute_sql_query(self, sql_query):
 
         result_rows = []
 
+        if sql_query.count(".sql") == 1:
+            sql_query = open(f"src/database/sql_queries/{sql_query}", "r").read()
+            
         con = sqlite3.connect("src/database/cards.db")
-        result = con.execute(open(f"src/database/sql_queries/{sql_file}.sql", "r").read())
-        rows = result.fetchall()
-        for row in rows:
-            result_rows.append(rows)
+        cursor = con.cursor()
+        result = cursor.execute(sql_query)
         
-        con.close()
-        return result_rows[0]
+        try:
+            rows = result.fetchall()
+            for row in rows:
+                result_rows.append(rows)
+            con.commit()
+            cursor.close()
+        except:
+            con.commit()
+            cursor.close()
+        
+        return result_rows

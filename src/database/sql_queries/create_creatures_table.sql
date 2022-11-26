@@ -1,6 +1,7 @@
 -- CREATE CREATURES TABLE IN SQLITE
 
 CREATE TABLE IF NOT EXISTS Creatures (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name varchar(255),
     element varchar(255),
     level varchar(255),
@@ -10,3 +11,4 @@ CREATE TABLE IF NOT EXISTS Creatures (
     strength int,
     resistance int
 );
+
