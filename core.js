@@ -19,7 +19,7 @@ const cartas = {
 function escolherMonstro(nomeMonstro) {
   for (let monstro in cartas) {
     if (cartas[monstro].nome === nomeMonstro) {
-      return cartas[monstro];
+      return JSON.stringify(cartas[monstro]);
     }
   }
   return null;
@@ -28,28 +28,29 @@ function escolherMonstro(nomeMonstro) {
 function escolherMonstroAleatorio() {
   const monstros = Object.values(cartas);
   const indiceAleatorio = Math.floor(Math.random() * monstros.length);
-  return monstros[indiceAleatorio];
+  return JSON.stringify(monstros[indiceAleatorio]);
 }
 
 
 var nomeMonstro = prompt("Escolha um monstro:");
 
 const monstroEscolhido = escolherMonstro(nomeMonstro);
-console.log("Seu monstro é: ");
-console.log(monstroEscolhido); // saída: {nome: 'Nome', ataque: x, defesa: y}
+document.write("Seu monstro é: ");
+document.write(monstroEscolhido); 
 
-console.log("-------------------------")
+document.write("<br>-------------------------<br>")
+
 
 const monstroAleatorio = escolherMonstroAleatorio();
-console.log("Monstro do oponente: ");
-console.log(monstroAleatorio); // saída: um objeto monstro aleatório do objeto cartas
+document.write("Monstro do oponente: ");
+document.write(monstroAleatorio);
 
-console.log("-------------------------")
+document.write("<br>-------------------------<br>")
 
 if(monstroEscolhido.ataque == monstroAleatorio.defesa){
-        console.log("Empate");   
+        document.write("Empate");   
     }else if(monstroEscolhido.ataque > monstroAleatorio.defesa){
-        console.log("Você Ganhou");  
+        document.write("Você Ganhou");  
     }else{
-        console.log("Você Perdeu");   
+        document.write("Você Perdeu");   
     }
