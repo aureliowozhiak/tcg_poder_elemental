@@ -111,7 +111,6 @@ function escolherMonstro(nomeMonstro) {
   return null;
 }
 
-
 function escolherMonstroAleatorio() {
   const monstros = Object.values(cartas);
   const indiceAleatorio = Math.floor(Math.random() * monstros.length);
@@ -131,6 +130,7 @@ document.write("Monstro do oponente: ");
 document.write(JSON.stringify(monstroAleatorio));
 
 document.write("<br>-------------------------<br>")
+
 
 if(monstroEscolhido.ataque == monstroAleatorio.defesa){
         document.write("Empate");   
