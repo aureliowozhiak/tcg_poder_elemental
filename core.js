@@ -117,25 +117,39 @@ function escolherMonstroAleatorio() {
   return monstros[indiceAleatorio];
 };
 
-var nomeMonstro = prompt("Escolha um monstro:");
+//var nomeMonstro = prompt("Escolha um monstro:");
+//
+//const monstroEscolhido = escolherMonstro(nomeMonstro);
+//document.write("Seu monstro é: ");
+//document.write(JSON.stringify(monstroEscolhido)); 
+//
+//document.write("<br>-------------------------<br>");
+//
+//const monstroAleatorio = escolherMonstroAleatorio();
+//document.write("Monstro do oponente: ");
+//document.write(JSON.stringify(monstroAleatorio));
+//
+//document.write("<br>-------------------------<br>")
+//
+//
+//if(monstroEscolhido.ataque == monstroAleatorio.defesa){
+//        document.write("Empate");   
+// }else if(monstroEscolhido.ataque > monstroAleatorio.defesa){
+//     document.write("Você Ganhou");  
+// }else{
+//     document.write("Você Perdeu");   
+// }
 
-const monstroEscolhido = escolherMonstro(nomeMonstro);
-document.write("Seu monstro é: ");
-document.write(JSON.stringify(monstroEscolhido)); 
 
-document.write("<br>-------------------------<br>");
+// Populando lista suspensa com os nomes dos monstros
+document.querySelector(".home-select").innerHTML = Object.keys(cartas).map((x) => {
+  return "<option value=" + x + ">" + x + "</option>";
+});
 
-const monstroAleatorio = escolherMonstroAleatorio();
-document.write("Monstro do oponente: ");
-document.write(JSON.stringify(monstroAleatorio));
-
-document.write("<br>-------------------------<br>")
-
-
-if(monstroEscolhido.ataque == monstroAleatorio.defesa){
-        document.write("Empate");   
- }else if(monstroEscolhido.ataque > monstroAleatorio.defesa){
-     document.write("Você Ganhou");  
- }else{
-     document.write("Você Perdeu");   
- }
+// Função para exibir os valores de ataque e defesa quando um monstro for selecionado
+document.querySelector(".home-select").addEventListener("change", (e) => {
+  const monstroSelecionado = cartas[e.target.value];
+  document.querySelector(".home-nomemonstro").innerHTML = monstroSelecionado.nome;
+  document.querySelector(".home-ataque").innerHTML = "ataque: " + monstroSelecionado.ataque;
+  document.querySelector(".home-defesa").innerHTML = "defesa: " + monstroSelecionado.defesa;
+});
