@@ -146,10 +146,36 @@ document.querySelector(".home-select").innerHTML = Object.keys(cartas).map((x) =
   return "<option value=" + x + ">" + x + "</option>";
 });
 
+
+
 // Função para exibir os valores de ataque e defesa quando um monstro for selecionado
 document.querySelector(".home-select").addEventListener("change", (e) => {
-  const monstroSelecionado = cartas[e.target.value];
+  var monstroSelecionado = cartas[e.target.value];
   document.querySelector(".home-nomemonstro").innerHTML = monstroSelecionado.nome;
   document.querySelector(".home-ataque").innerHTML = "ataque: " + monstroSelecionado.ataque;
   document.querySelector(".home-defesa").innerHTML = "defesa: " + monstroSelecionado.defesa;
 });
+
+
+function batalhar(){
+  const monstroEscolhido = escolherMonstro(document.querySelector(".home-nomemonstro").textContent);
+  //alert(JSON.stringify(monstroEscolhido));
+  const monstroAleatorio = escolherMonstroAleatorio();
+  document.querySelector(".home-nomemonstro1").innerHTML = monstroAleatorio.nome;
+  document.querySelector(".home-ataque1").innerHTML = "ataque: " + monstroAleatorio.ataque;
+  document.querySelector(".home-defesa1").innerHTML = "defesa: " + monstroAleatorio.defesa;
+
+
+
+  var resultado = "";
+  if(monstroEscolhido.ataque == monstroAleatorio.defesa){
+    resultado = "Empate";
+  }else if(monstroEscolhido.ataque > monstroAleatorio.defesa){
+    resultado = "Você Ganhou";  
+  }else{
+    resultado = "Você Perdeu";   
+  }
+
+
+  document.querySelector("body > div > div > h1").innerHTML = resultado;
+}
